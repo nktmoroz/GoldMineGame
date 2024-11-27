@@ -1,12 +1,9 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
-export default function GoldDisplay(currentGold, maxGold) {
+export default function GoldDisplay({currentGold, maxGold, setIsCollecting}) {
 
-  const [isCollecting = false, setIsCollecting] = useState();
-
-  currentGold = 0;
-  maxGold = 100;
+  let isCollecting = false;
 
   const swap = () => {
     if(isCollecting){
@@ -25,10 +22,11 @@ export default function GoldDisplay(currentGold, maxGold) {
     displayText = 'You Struck Gold!'
     buttonText = 'Start Mining!'
   }
+
   return (
     <View style={styles.container}>
         <Text style={styles.displayText}>{displayText}</Text>
-        <img src={'../icons/ore.png'} style={styles.icon}/>
+        <img src={'./icons/ore.png'} style={styles.icon}/>
         <Text style={styles.displayText}>Current Gold: {currentGold}/{maxGold}</Text>
         <TouchableOpacity style={styles.button} onPress={()=> {swap()}}>
           <Text style={styles.buttonText}>{buttonText}</Text>

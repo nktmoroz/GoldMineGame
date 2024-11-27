@@ -1,12 +1,25 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+
 
 import GoldDisplay from './components/GoldDisplay';
+import GoldGenerator from './components/GoldGenerator';
 
-export default function GoldScreen() {
+export default function GoldScreen({currentGold, maxGold}) {
+
+  currentGold = 0;
+  maxGold = 100;
+
+  const [isCollecting = false, setIsCollecting] = useState();
+
   return (
     <View style={styles.container}>
-        <GoldDisplay/>
+        <GoldDisplay 
+        isCollecting={isCollecting} 
+        setIsCollecting={setIsCollecting}
+        currentGold={currentGold}
+        maxGold={maxGold}
+        />
     </View>
   );
 }
