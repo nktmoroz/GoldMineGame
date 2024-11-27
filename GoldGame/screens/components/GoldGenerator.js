@@ -1,20 +1,28 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useEffect, useState} from 'react';
 
-export default function GoldGenerator({currentGold, maxGold}) {
+export default function GoldGenerator({currentGold, maxGold, isCollecting, setCurrentGold}) {
 
-  currentGold = 0;
-  maxGold = 100;
+    useEffect(()=> {
+        if(isCollecting){
+            const timer = setInterval(() => {
+                setCurrentGold(prev => prev + 1);
+            }, 1000);
+        }
+    }, [seconds]);
 
   return (
     <View style={styles.container}>
+        <TouchableOpacity style={styles.button}>
+          <Text>Start</Text>
+        </TouchableOpacity>
+        <Text>Current Gold: {currentGold}/{maxGold}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {        
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },

@@ -1,10 +1,8 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
-export default function GoldDisplay({currentGold, maxGold, setIsCollecting}) {
-
-  let isCollecting = false;
-
+export default function GoldDisplay({currentGold, maxGold, isCollecting, setIsCollecting}) {
+  
   const swap = () => {
     if(isCollecting){
       setIsCollecting(false)

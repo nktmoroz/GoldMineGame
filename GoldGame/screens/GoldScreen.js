@@ -11,6 +11,7 @@ export default function GoldScreen({currentGold, maxGold}) {
   maxGold = 100;
 
   const [isCollecting = false, setIsCollecting] = useState();
+  const [currentGold = 0, setCurrentGold] = useState();
 
   return (
     <View style={styles.container}>
@@ -19,6 +20,12 @@ export default function GoldScreen({currentGold, maxGold}) {
         setIsCollecting={setIsCollecting}
         currentGold={currentGold}
         maxGold={maxGold}
+        />
+        <GoldGenerator
+        currentGold={currentGold}
+        maxGold={maxGold}
+        isCollecting={isCollecting}
+        setCurrentGold={setCurrentGold}
         />
     </View>
   );
