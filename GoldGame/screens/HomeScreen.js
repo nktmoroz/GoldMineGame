@@ -17,7 +17,7 @@ export default function HomeScreen() {
 
   const login = async () => {
     try{
-      const result = await authorize(credentials);
+      const result = await authorize(config);
       setAccess(result.access);
     }catch (error){
       console.log('Loging Error: ', error)

@@ -4,6 +4,7 @@ import { Context } from '../App';
 
 export default function UpgradeScreen() {
 
+  //set and update prices for each type of upgrade
   const [capacityCost, setCapacityCost] = useState(10);
   const [rateCost, setRateCost] = useState(10);
 
@@ -16,18 +17,18 @@ export default function UpgradeScreen() {
 
   const capacityUpgrade = () => {
     if(currentGold >= capacityCost){
-      setMaxGold (maxGold + 50)
+      setMaxGold (maxGold + 50) //set updgraded capacity
       setCurrentGold(currentGold - capacityCost)
-      setCapacityCost (Math.floor(capacityCost * 1.5))
+      setCapacityCost (Math.floor(capacityCost * 1.5)) //update cost of upgrade
       setIsCollecting(false)
     }
   }
 
   const rateUpgrade = () => {
     if(currentGold >= rateCost){
-      setMiningRate (miningRate + 1)
+      setMiningRate (miningRate + 1) //set upgraded capacity
       setCurrentGold(currentGold - rateCost)
-      setRateCost (Math.floor(rateCost * 1.5))
+      setRateCost (Math.floor(rateCost * 1.5)) //update cost of upgrade
       setIsCollecting(false)
     }
   }

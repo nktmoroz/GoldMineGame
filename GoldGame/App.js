@@ -7,17 +7,17 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from './screens/HomeScreen';
 import GoldScreen from './screens/GoldScreen';
 import UpgradeScreen from './screens/UpgradeScreen';
-import { View } from 'react-native-web';
+import Notification from './screens/components/notification';
 
 const Tab = createBottomTabNavigator();
 export const Context = React.createContext();
 
 export default function App() {
 
-  const [currentGold, setCurrentGold] = useState(0);
-  const [maxGold, setMaxGold] = useState(100);
-  const [miningRate, setMiningRate] = useState(1);
-  const [isCollecting, setIsCollecting] = useState(false);
+  const [currentGold, setCurrentGold] = useState(0); //gold earned
+  const [maxGold, setMaxGold] = useState(100); //maximum gold held
+  const [miningRate, setMiningRate] = useState(1); //how much gold is mined per tick
+  const [isCollecting, setIsCollecting] = useState(false); //is gold being mined or not
 
 
   return (
@@ -25,7 +25,7 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
-            tabBarIcon: ({ color, size }) => {
+            tabBarIcon: ({ color, size }) => { //set icon for navigation bar
               let iconName;
               if (route.name === 'Account') {
                 iconName = 'person-circle-outline';
