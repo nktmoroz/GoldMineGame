@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 
-export default function GoldDisplay({currentGold, maxGold, isCollecting, setIsCollecting}) {
+export default function GoldDisplay ({currentGold, maxGold, isCollecting, setIsCollecting}) {
 
+  //changes isCollecting from true to false or vice versa
   const swap = () => {
     if(isCollecting){
       setIsCollecting(false)
@@ -11,20 +12,21 @@ export default function GoldDisplay({currentGold, maxGold, isCollecting, setIsCo
     }
   }
 
+  //set text display based on whether or not gold is being collected
   let displayText = ''
   let buttonText = ''
   if(isCollecting){
-    displayText = "You're Gonna be Rich!"
+    displayText = "We're Gonna Be Rich!"
     buttonText = 'Halt Mining'
   }else{
-    displayText = "You've Found Gold"
+    displayText = "A Gold Deposit!"
     buttonText = 'Start Mining!'
   }
 
   return (
     <View style={styles.container}>
         <Text style={styles.displayText}>{displayText}</Text>
-        <img src={'./icons/ore.png'} style={styles.icon}/>
+        <Image source={require('../../icons/ore.png')} style={styles.icon}/>
         <Text style={styles.displayText}>Current Gold: {currentGold}/{maxGold}</Text>
         <TouchableOpacity style={styles.button} onPress={()=> {swap()}}>
           <Text style={styles.buttonText}>{buttonText}</Text>
@@ -39,8 +41,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    maxWidth: 150,
-    maxHeight: 150,
+    maxWidth: 200,
+    maxHeight: 200,
     padding: 10,
     alignSelf: 'center',
   },
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 10,
     padding: 10,
-    marginBottom: 10,
+    marginTop: 10,
     backgroundColor: 'black',
   },
   buttonText: {

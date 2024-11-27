@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-export default function GoldGenerator({isCollecting, maxGold, currentGold, setCurrentGold, miningRate}) {
+export default function GoldGenerator({isCollecting, setIsCollecting, maxGold, currentGold, setCurrentGold, miningRate, miningSpeed}) {
 
     count = currentGold; //keeps track of current gold during useEffect
     useEffect(()=> {
@@ -10,9 +10,10 @@ export default function GoldGenerator({isCollecting, maxGold, currentGold, setCu
                 setCurrentGold(prev => prev + miningRate); //updates the current gold count based on the rate of mining
                 count += miningRate;
                 if(count >= maxGold){ //stops interval if capacity is reached
-                    clearInterval(timer) 
+                    clearInterval(timer)
+                    setIsCollecting(false)
                 }
-            }, 1000);
+            }, 500); //mines gold per second
             return () => clearInterval(timer);
         }
     }, [isCollecting]);//starts whenever isCollecting is updated

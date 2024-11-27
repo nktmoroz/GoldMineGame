@@ -1,0 +1,45 @@
+<NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
+            if (route.name === 'Account') {
+              iconName = 'person-circle-outline';
+            } else if (route.name === 'Mining') {
+              iconName = 'diamond-outline';
+            } else if (route.name === 'Upgrade') {
+              iconName = 'arrow-up-circle-outline';
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+      >
+        <Tab.Screen name="Account" component={HomeScreen} />
+        <Tab.Screen name="Mining" component={GoldScreen} options={{'currentGold': currentGold}}/>
+        <Tab.Screen name="Upgrade" component={UpgradeScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+
+
+
+
+    <View style={styles.container}>
+      <GoldScreen 
+        currentGold={currentGold}
+        setCurrentGold={setCurrentGold}
+        miningRate={miningRate}
+        maxGold={maxGold}
+        isCollecting={isCollecting}
+        setIsCollecting={setIsCollecting}
+      />
+      <UpgradeScreen 
+        currentGold={currentGold}
+        setCurrentGold={setCurrentGold}
+        maxGold={maxGold}
+        setMaxGold={setMaxGold}
+        miningRate={miningRate}
+        setMiningRate={setMiningRate}
+        isCollecting={isCollecting}
+        setIsCollecting={setIsCollecting}
+      />
+    </View>
