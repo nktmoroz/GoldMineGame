@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React, {useState, useContext} from 'react';
 import { Context } from '../App';
+import Rate from './upgrades/Rate';
+import Capacity from './upgrades/Capacity';
 
 export default function UpgradeScreen() {
 
@@ -35,22 +37,10 @@ export default function UpgradeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choose your Upgrade</Text>
+      <Text style={styles.title}>Choose your Upgrade!</Text>
         <View style={styles.upgradeBoxes}>
-          <View style={styles.icon}>
-          <Image source={require('../icons/gold.png')} style={styles.iconImg}/>
-            <TouchableOpacity style={styles.upgradeButton} onPress={capacityUpgrade}>
-              <Text style={styles.buttonText}> Upgrade Capacity </Text>
-            </TouchableOpacity>
-              <Text style={styles.costText}>Cost: {capacityCost} </Text>
-          </View>
-          <View style={styles.icon}>
-          <Image source={require('../icons/axe.png')} style={styles.iconImg}/>
-            <TouchableOpacity style={styles.upgradeButton} onPress={rateUpgrade}>
-              <Text style={styles.buttonText}> Upgrade Mining Rate </Text>
-            </TouchableOpacity>
-            <Text style={styles.costText}>Cost: {rateCost} </Text>
-          </View>
+          <Capacity capacityCost={capacityCost} capacityUpgrade={capacityUpgrade} maxGold={maxGold}/>
+          <Rate rateCost={rateCost} rateUpgrade={rateUpgrade} miningRate={miningRate}/>
         </View>
         <Text style={styles.count}>Current Gold: {currentGold}</Text>
     </View>
