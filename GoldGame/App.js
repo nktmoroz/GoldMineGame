@@ -9,9 +9,7 @@ import UpgradeScreen from './screens/UpgradeScreen';
 export default function App() {
   return (
     <View style={styles.container}>
-      <HomeScreen/>
       <GoldScreen/>
-      <UpgradeScreen/>
     </View>
   );
 }
