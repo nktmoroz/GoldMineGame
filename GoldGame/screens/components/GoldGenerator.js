@@ -3,27 +3,22 @@ import React, {useEffect, useState} from 'react';
 
 export default function GoldGenerator({isCollecting, maxGold, currentGold, setCurrentGold, miningRate}) {
 
-    count = currentGold;
+    count = currentGold; //keeps track of current gold during useEffect
     useEffect(()=> {
         if(isCollecting & currentGold < maxGold){
             const timer = setInterval(() => {
-                setCurrentGold(prev => prev + miningRate);
+                setCurrentGold(prev => prev + miningRate); //updates the current gold count based on the rate of mining
                 count += miningRate;
-                console.log('current gold:' + count)
-                if(count >= maxGold){
-                    clearInterval(timer)
+                if(count >= maxGold){ //stops interval if capacity is reached
+                    clearInterval(timer) 
                 }
             }, 1000);
             return () => clearInterval(timer);
         }
-    }, [isCollecting]);
+    }, [isCollecting]);//starts whenever isCollecting is updated
 
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.button}>
-          <Text>Start</Text>
-        </TouchableOpacity>
-        <Text>Current Gold: {currentGold}/{maxGold}</Text>
     </View>
   );
 }

@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
 export default function GoldDisplay({currentGold, maxGold, isCollecting, setIsCollecting}) {
-  
+
   const swap = () => {
     if(isCollecting){
       setIsCollecting(false)
@@ -14,10 +14,10 @@ export default function GoldDisplay({currentGold, maxGold, isCollecting, setIsCo
   let displayText = ''
   let buttonText = ''
   if(isCollecting){
-    displayText = 'Mining Gold!'
+    displayText = "You're Gonna be Rich!"
     buttonText = 'Halt Mining'
   }else{
-    displayText = 'You Struck Gold!'
+    displayText = "You've Found Gold"
     buttonText = 'Start Mining!'
   }
 
