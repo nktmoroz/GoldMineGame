@@ -5,7 +5,7 @@ import { TextInput } from 'react-native-web';
 
 export default function HomeScreen() {
 
-  const credentials ={
+  const config ={
     username: 'Nikita',
     password: '1234'
   }
@@ -32,8 +32,9 @@ export default function HomeScreen() {
         </View>
       ) : (
         <View style={styles.container}>
-          <TextInput placeholder='Username' style={styles.credentials}></TextInput>
-          <TextInput placeholder='Password' style={styles.credentials} secureTextEntry={true}></TextInput>
+          <Text style={{fontSize:50, fontWeight:'bold', margin: 20}}>Welcome</Text>
+          <TextInput placeholder='Username' id="username" style={styles.credentials}></TextInput>
+          <TextInput placeholder='Password' id="password" style={styles.credentials} secureTextEntry={true}></TextInput>
           <TouchableOpacity onPress={login} style={styles.button}>
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
     flex: 1,                    
     justifyContent: 'center',   
     alignItems: 'center',
-    width: '100%',
+    display: 'flex',
+    paddingTop: '20%'
   },
   credentials:{
     alignItems: 'center',
