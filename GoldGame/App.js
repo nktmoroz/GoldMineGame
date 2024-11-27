@@ -10,6 +10,7 @@ import UpgradeScreen from './screens/UpgradeScreen';
 import { View } from 'react-native-web';
 
 const Tab = createBottomTabNavigator();
+export const Context = React.createContext();
 
 export default function App() {
 
@@ -20,27 +21,29 @@ export default function App() {
 
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            let iconName;
-            if (route.name === 'Account') {
-              iconName = 'person-circle-outline';
-            } else if (route.name === 'Mining') {
-              iconName = 'diamond-outline';
-            } else if (route.name === 'Upgrade') {
-              iconName = 'arrow-up-circle-outline';
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-      >
-        <Tab.Screen name="Account" component={HomeScreen} />
-        <Tab.Screen name="Mining" component={GoldScreen}/>
-        <Tab.Screen name="Upgrade" component={UpgradeScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Context.Provider value={{gold: [currentGold,setCurrentGold], max: [maxGold,setMaxGold], rate: [miningRate,setMiningRate], collect:[isCollecting,setIsCollecting]}}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color, size }) => {
+              let iconName;
+              if (route.name === 'Account') {
+                iconName = 'person-circle-outline';
+              } else if (route.name === 'Mining') {
+                iconName = 'diamond-outline';
+              } else if (route.name === 'Upgrade') {
+                iconName = 'arrow-up-circle-outline';
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+        >
+          <Tab.Screen name="Account" component={HomeScreen} />
+          <Tab.Screen name="Mining" component={GoldScreen}/>
+          <Tab.Screen name="Upgrade" component={UpgradeScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Context.Provider>
   );
 }
 

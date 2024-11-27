@@ -1,7 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Context } from '../../App';
 
-export default function GoldDisplay ({currentGold, maxGold, isCollecting, setIsCollecting}) {
+export default function GoldDisplay () {
+
+  const {gold, max, rate, collect} = useContext(Context)
+
+  const [currentGold, setCurrentGold] = gold
+  const [maxGold, setMaxGold] = max
+  const [isCollecting, setIsCollecting] = collect
 
   //changes isCollecting from true to false or vice versa
   const swap = () => {

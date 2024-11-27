@@ -1,10 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { Context } from '../App';
 
-export default function UpgradeScreen({currentGold, setCurrentGold, maxGold, setMaxGold, miningRate, setMiningRate, isCollecting, setIsCollecting}) {
+export default function UpgradeScreen() {
 
   const [capacityCost, setCapacityCost] = useState(10);
   const [rateCost, setRateCost] = useState(10);
+
+  const {gold, max, rate, collect} = useContext(Context)
+
+  const [currentGold, setCurrentGold] = gold
+  const [maxGold, setMaxGold] = max
+  const [miningRate, setMiningRate] = rate
+  const [isCollecting, setIsCollecting] = collect
 
   const capacityUpgrade = () => {
     if(currentGold >= capacityCost){
