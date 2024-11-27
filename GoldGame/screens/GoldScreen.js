@@ -5,13 +5,12 @@ import React, {useState} from 'react';
 import GoldDisplay from './components/GoldDisplay';
 import GoldGenerator from './components/GoldGenerator';
 
-export default function GoldScreen({currentGold, maxGold}) {
+export default function GoldScreen() {
 
-  currentGold = 0;
-  maxGold = 100;
-
+    maxGold = 10;
   const [isCollecting = false, setIsCollecting] = useState();
-  const [currentGold = 0, setCurrentGold] = useState();
+  const [currentGold, setCurrentGold] = useState(0);
+  const [miningRate, setMiningRate] = useState(1);
 
   return (
     <View style={styles.container}>
@@ -26,6 +25,7 @@ export default function GoldScreen({currentGold, maxGold}) {
         maxGold={maxGold}
         isCollecting={isCollecting}
         setCurrentGold={setCurrentGold}
+        miningRate={miningRate}
         />
     </View>
   );

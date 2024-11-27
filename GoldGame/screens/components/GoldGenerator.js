@@ -1,15 +1,22 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-export default function GoldGenerator({currentGold, maxGold, isCollecting, setCurrentGold}) {
+export default function GoldGenerator({isCollecting, maxGold, currentGold, setCurrentGold, miningRate}) {
 
+    count = currentGold;
     useEffect(()=> {
-        if(isCollecting){
+        if(isCollecting & currentGold < maxGold){
             const timer = setInterval(() => {
-                setCurrentGold(prev => prev + 1);
+                setCurrentGold(prev => prev + miningRate);
+                count += miningRate;
+                console.log('current gold:' + count)
+                if(count >= maxGold){
+                    clearInterval(timer)
+                }
             }, 1000);
+            return () => clearInterval(timer);
         }
-    }, [seconds]);
+    }, [isCollecting]);
 
   return (
     <View style={styles.container}>
