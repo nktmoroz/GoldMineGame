@@ -1,6 +1,6 @@
 import { StyleSheet} from 'react-native';
 import React, {useState, useContext} from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -38,6 +38,7 @@ export default function App() {
             },
           })}
         >
+          {/*Setup screens */}
           <Tab.Screen name="Account" component={HomeScreen} />
           <Tab.Screen name="Mining" component={GoldScreen}/>
           <Tab.Screen name="Upgrade" component={UpgradeScreen} />

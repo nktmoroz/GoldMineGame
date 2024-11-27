@@ -15,12 +15,12 @@ export default function HomeScreen() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
-  const login = async () => {
+  const login = async () => {//await log in information
     try{
-      const result = await authorize(config);
+      const result = await authorize(config);//authorize based on config
       setAccess(result.access);
     }catch (error){
-      console.log('Loging Error: ', error)
+      console.log('Log-in Error: ', error)
     }
   }
 
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',   
     alignItems: 'center',
     display: 'flex',
-    paddingTop: '20%'
+    paddingTop: '10%'
   },
   credentials:{
     alignItems: 'center',
